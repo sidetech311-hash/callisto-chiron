@@ -1,20 +1,44 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Nexus Download Manager (Nexus IDM)
 
-# Run and deploy your AI Studio app
+A high-speed, multi-threaded internet download manager built with React, Express, and Tailwind CSS.
 
-This contains everything you need to run your app locally.
+## Features
+- **Multi-threaded Downloading:** Simulates segmented downloading for maximum speed.
+- **Real-time Analytics:** Speed tracking charts and progress updates.
+- **Smart Categorization:** Automatically sorts files into Video, Music, Documents, etc.
+- **Responsive Design:** Works perfectly on both Desktop and Mobile browsers.
 
-View your app in AI Studio: https://ai.studio/apps/75e8bea3-c975-4c46-a68f-d56f3ece8d0b
+## Local Installation
 
-## Run Locally
+### Prerequisites
+- [Node.js](https://nodejs.org/) (v18 or higher recommended)
+- npm (comes with Node.js)
 
-**Prerequisites:**  Node.js
+### Steps
+1. **Clone or Download** this project to your machine.
+2. **Open Terminal** in the project folder.
+3. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+4. **Configure Environment**:
+   - Create a `.env` file in the root directory.
+   - Add your Gemini API Key:
+     ```env
+     GEMINI_API_KEY=your_api_key_here
+     ```
+5. **Start Development Server**:
+   ```bash
+   npm run dev
+   ```
+6. **Access the App**:
+   Open [http://localhost:3000](http://localhost:3000) in your browser.
 
+## Mobile Use
+To use it on your phone right now:
+1. Ensure your phone and laptop are on the same Wi-Fi network.
+2. Find your laptop's local IP address.
+3. Visit `http://YOUR_IP:3000` on your phone's browser.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Deployment
+This app is ready to be deployed to platforms like **Cloud Run**, **Vercel**, or **Heroku**. For mobile stores, consider using **Capacitor** to wrap the web build into a native app.

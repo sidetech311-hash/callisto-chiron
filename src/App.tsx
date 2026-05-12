@@ -407,12 +407,29 @@ function DownloadCard({ job, onToggle, onRemove }: { job: DownloadJob; onToggle:
               <p className="text-[10px] text-slate-500 font-mono truncate max-w-sm mt-0.5">{job.url}</p>
             </div>
             <div className="flex items-center gap-2">
-              <button 
-                onClick={onToggle}
-                className="p-2 bg-[#1C1F26] text-slate-400 hover:text-white rounded-lg border border-[#2A2E38] hover:border-[#3A3E48] transition-all"
-              >
-                {isDownloading ? <Pause className="w-3.5 h-3.5 fill-current" /> : <Play className="w-3.5 h-3.5 fill-current" />}
-              </button>
+              {job.status === "completed" ? (
+                <button 
+                  onClick={() => {
+                    const link = document.createElement('a');
+                    link.href = job.url;
+                    link.download = job.filename;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                  }}
+                  className="flex items-center gap-2 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white text-[11px] font-bold rounded-lg shadow-lg shadow-emerald-500/20 transition-all border border-emerald-500/50"
+                >
+                  <FolderOpen className="w-3.5 h-3.5" />
+                  Save to Disk
+                </button>
+              ) : (
+                <button 
+                  onClick={onToggle}
+                  className="p-2 bg-[#1C1F26] text-slate-400 hover:text-white rounded-lg border border-[#2A2E38] hover:border-[#3A3E48] transition-all"
+                >
+                  {isDownloading ? <Pause className="w-3.5 h-3.5 fill-current" /> : <Play className="w-3.5 h-3.5 fill-current" />}
+                </button>
+              )}
               <button 
                 onClick={onRemove}
                 className="p-2 bg-[#1C1F26] text-slate-500 hover:text-red-400 rounded-lg border border-[#2A2E38] hover:border-red-400/30 transition-all"
